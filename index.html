@@ -34,6 +34,11 @@ svg {
 
 }
 
+.texth3 {
+	font-size: 15px;
+
+}
+
 .axis line {
     fill: none;
     stroke: black;
@@ -128,7 +133,12 @@ svg {
 
 	//console.log(prices)
 	
-	});			
+	});	
+	
+	d3.select("body").append("h2").attr("class","texth3").text("1.If ESPN is an outlier in terms of price, is it also an outlier in terms of viewership? ")
+	d3.select("body").append("h2").attr("class","texth3").text("2.How has the price of the top five channels (in terms of viewership) changed over time?")
+    d3.select("body").append("h2").attr("class","texth3").text("3. How does customer satisfaction vary according to price?")
+			
 		
         </script>
     </body>
