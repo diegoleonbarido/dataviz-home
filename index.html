@@ -1,145 +1,17 @@
-<!-- shamelessly stolen from scott murray: http://alignedleft.com/tutorials -->
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
 <html lang="en">
-
-<style type="text/css">
-svg {
-  border: 5px solid white;
-}
-
-.testbar {
-  fill: #ff00ff;
-}
-
-.bar {
-	fill:#ddd;
-}
-
-.g-ESPN{
-	fill: orange;
-}
-
-.g-NETWORK{
-	fill: grey;
-}
-
-.texth1 {
-	font-size: 20px;	
-
-}
-
-.texth2 {
-	font-size: 13px;
-	color: grey;	
-
-}
-
-.texth3 {
-	font-size: 15px;
-
-}
-
-.axis line {
-    fill: none;
-    stroke: black;
-    shape-rendering: crispEdges;
-}
-
-.axis text {
-    font-family: sans-serif;
-    font-size: 11px;
-}
-
-</style>
-
-
-    <head>
-        <meta charset="utf-8">
-        <title>D3 Test</title>
-        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    </head>
-
-    <body>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Class Assignments</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Diego Ponce de Leon Barido">
+	<!-- Date: 2013-09-23 -->
+</head>
+<body>
 	
-        <script type="text/javascript">
-         d3.select("body").append("h1").attr("class","texth1").text("Cost per pay TV subscriber per month")
-		d3.select("body").append("h2").attr("class","texth2").text("ESPN’s average monthly price is more than four times the monthly fee for the next most expensive national network.")
-		d3.select("body").append("h2").attr("class","texth2").text("Cost Per Day TV Subscriber per Month")
 
-		var margin = {top: 20, right: 10, bottom: 20, left: 10};
 
-		var width = 800 - margin.left - margin.right,
-		height = 350 - margin.top - margin.bottom;
-
-		var svg = d3.select("body").append("svg")
-		    .attr("width", width + margin.left + margin.right)
-		    .attr("height", height + margin.top + margin.bottom)
-		    .append("g")
-		    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-		
-		//The code below simply makes a rectangle
-			//var testRectangle = svg.append("rect")
-			  //  .attr("x", 20)
-			    //.attr("y", 100)
-			    //.attr("height", 50)
-			    //.attr("width", 200)
-			    //.attr("class", "testbar");
-			
-	//Loading data into D3		
-    d3.csv("subscription-prices.csv", function(err,prices){
-	
-	// recasts d.2013 as a number, not a string
-	prices.forEach(function(d){d.X2013 = +d.X2013; })
-	prices.sort(function(a,b){return a.X2013 - b.X2013;});
-	
-	var y = d3.scale.linear()
-		.domain([0,5])
-		.range([0,height]);
-		
-	var x = d3.scale.linear()
-		.domain([0,prices.length])
-		.range([0,width]);
-		
-	//Adding the y-AXis	
-	var yAxis = d3.svg.axis()
-		             .scale(y)
-		             .orient("right")
-		             .ticks(5);
-	
-		
-	var bar = svg.selectAll(".bar")
-	.data(prices)
-	.enter().append("rect")
-	.attr("width",2)
-	.attr("height", function(d) {return y(d.X2013)})
-	.attr("y", function(d) {return height - y(d.X2013)})
-	.attr("x",function(d,i){return 3*i})
-	.attr("class","bar")
-	.classed("g-ESPN",function(d){return d.Network == "ESPN"})
-	.classed("g-NETWORK",function(d){return d.Network == "TNT" || d.Network == "ESPN2" || d.Network == "TBS" || d.Network == "Bravo" || d.Network == "MSNBC" || d.Network == "Comedy Central" || d.Network == "The Weather Channel" || d.Network == "C-SPAN"});
-
-	
-	svg.append("text")
-	.attr("class","g-label")
-		.attr("x",530)
-		.attr("y",30)
-		.text("ESPN ($5.24)");
-	
-	//Calling the Y axis?
-		svg.append("g")
-		    .attr("class", "axis")
-		    .attr("transform", "translate(" + padding + ",0)")
-		    .call(yAxis);
-
-	//console.log(prices)
-	
-	});	
-	
-	d3.select("body").append("h2").attr("class","texth3").text("1.If ESPN is an outlier in terms of price, is it also an outlier in terms of viewership? ")
-	d3.select("body").append("h2").attr("class","texth3").text("2.How has the price of the top five channels (in terms of viewership) changed over time?")
-    d3.select("body").append("h2").attr("class","texth3").text("3. How does customer satisfaction vary according to price?")
-			
-		
-        </script>
-    </body>
+</body>
 </html>
